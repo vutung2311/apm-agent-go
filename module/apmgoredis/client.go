@@ -21,6 +21,7 @@ package apmgoredis
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	"github.com/go-redis/redis"
@@ -150,6 +151,9 @@ func process(ctx context.Context) func(oldProcess func(cmd redis.Cmder) error) f
 	return func(oldProcess func(cmd redis.Cmder) error) func(cmd redis.Cmder) error {
 		return func(cmd redis.Cmder) error {
 			spanName := strings.ToUpper(cmd.Name())
+			if len(cmd.Args()) > 1 {
+				spanName = spanName + " " + fmt.Sprintf("%s", cmd.Args()[1])
+			}
 			span, _ := apm.StartSpan(ctx, spanName, "db.redis")
 			defer span.End()
 
