@@ -73,9 +73,9 @@ func TestRequestContext(t *testing.T) {
 
 			require.Len(t, spans, 3)
 
-			assert.Equal(t, "GET", spans[0].Name)
-			assert.Equal(t, "SET", spans[1].Name)
-			assert.Equal(t, "GET", spans[2].Name)
+			assert.Equal(t, "GET content", spans[0].Name)
+			assert.Equal(t, "SET content", spans[1].Name)
+			assert.Equal(t, "GET content", spans[2].Name)
 		})
 	}
 }
