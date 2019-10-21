@@ -10,6 +10,10 @@
  - Setting `ELASTIC_APM_TRANSACTION_MAX_SPANS` to 0 now disables all spans (#640)
  - module/apmzerolog: add Writer.MinLevel (#641)
  - Introduce SetLabel and deprecate SetTag (#642)
+ - Support central config for `ELASTIC_APM_CAPTURE_BODY` and `ELASTIC_APM_TRANSACTION_MAX_SPANS` (#648)
+ - module/apmgorm: sql.ErrNoRows is no longer reported as an error (#645)
+ - Server URL path is cleaned/canonicalizsed in order to avoid 301 redirects (#658)
+ - `context.request.socket.remote_address` now reports the peer address (#662)
 
 ## [v1.5.0](https://github.com/elastic/apm-agent-go/releases/tag/v1.5.0)
 
